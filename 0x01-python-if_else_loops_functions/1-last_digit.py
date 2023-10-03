@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 import random
-number = "David"
+number = random.randint(-10000, 10000)
 try:
     last_digit = int(str(number)[-1])
     if number < 0:
