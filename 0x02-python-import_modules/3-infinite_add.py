@@ -7,5 +7,5 @@ if __name__ == "__main__":
     args = sys.argv
     num_args = len(args)
     for arg in range(1, num_args):
-        sum += args[arg]
+        sum += int(args[arg])
     print(sum)
