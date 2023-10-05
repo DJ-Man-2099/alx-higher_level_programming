@@ -1,5 +1,8 @@
 #!/usr/bin/python3
-def main(add):
+from add_0 import add
+
+
+def main():
     a = 1
     b = 2
     c = add(a, b)
@@ -7,5 +10,4 @@ def main(add):
 
 
 if __name__ == "__main__":
-    import add_0
-    main(add_0.add)
+    main()
