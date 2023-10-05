@@ -1,6 +1,12 @@
 #!/usr/bin/python3
-from add_0 import add
-a = 1
-b = 2
-c = add(a, b)
-print("{:d} + {:d} = {:d}".format(a, b, c))
+from calculator_1 import add, sub, mul, div
+a = 10
+b = 5
+add_res = add(a, b)
+sub_res = sub(a, b)
+mul_res = mul(a, b)
+div_res = div(a, b)
+print("{:d} + {:d} = {:d}".format(a, b, add_res))
+print("{:d} - {:d} = {:d}".format(a, b, sub_res))
+print("{:d} * {:d} = {:d}".format(a, b, mul_res))
+print("{:d} / {:d} = {:d}".format(a, b, div_res))
