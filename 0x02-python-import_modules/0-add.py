@@ -3,4 +3,4 @@ from add_0 import add
 a = 1
 b = 2
 c = add(a, b)
-print("{:d} + {:d} = {:d}".format(a, b, c))
+print(f"{a:d} + {b:d} = {c:d}")
