@@ -6,5 +6,5 @@ def no_prefix(value):
 
 if __name__ == "__main__":
     names = list(filter(no_prefix, dir('hidden_4.pyc')))
-    for name in sorted(names):
+    for name in names:
         print(name)
