@@ -12,7 +12,7 @@ roman_numerical = {
 
 def roman_to_int(roman_string):
     sum = 0
-    if roman_string is not None or not isinstance(roman_string, str):
+    if roman_string is not None and isinstance(roman_string, str):
         for i in roman_string:
             sum += roman_numerical[i]
     return sum
