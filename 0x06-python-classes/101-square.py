@@ -57,7 +57,7 @@ class Square:
 
     def my_print(self):
         __doc__ = "prints the square instance in ##"
-        print(self, end="")
+        print(self)
 
     def __str__(self) -> str:
         __doc__ = "returns the str to print"
@@ -69,5 +69,6 @@ class Square:
                     _string += " "
                 for j in range(self.__size):
                     _string += "#"
-                _string += "\n"
+                if i != self.__size - 1:
+                    _string += "\n"
         return _string
