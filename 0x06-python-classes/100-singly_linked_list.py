@@ -54,7 +54,6 @@ class SinglyLinkedList:
 
     def __init__(self):
         __doc__ = "Initializer"
-        pass
 
     def __str__(self) -> str:
         __doc__ = "gets string"
