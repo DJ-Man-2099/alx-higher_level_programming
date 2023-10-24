@@ -55,15 +55,14 @@ class SinglyLinkedList:
     def __init__(self):
         __doc__ = "Initializer"
 
-    def __str__(self) -> str:
-        __doc__ = "gets string"
-        string = ""
-        current = self.__head
-        while current is not None:
-            string += str(current.data)+"\n"
-            current = current.next_node
-        string = string.removesuffix("\n")
-        return string
+    def __str__(self):
+        """Define the print() representation of a SinglyLinkedList."""
+        values = []
+        tmp = self.__head
+        while tmp is not None:
+            values.append(str(tmp.data))
+            tmp = tmp.next_node
+        return ('\n'.join(values))
 
     def sorted_insert(self, value):
         __doc__ = "insert in sorted list"
