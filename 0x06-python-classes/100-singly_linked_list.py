@@ -62,8 +62,8 @@ class SinglyLinkedList:
         while current is not None:
             string += str(current.data)+"\n"
             current = current.next_node
-        string = string.removesuffix("\n")
-        string = string.removeprefix("\n")
+        if string.endswith("\n"):
+            string = string[:-1]
         return string
 
     def sorted_insert(self, value):
