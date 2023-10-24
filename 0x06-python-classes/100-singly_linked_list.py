@@ -63,6 +63,7 @@ class SinglyLinkedList:
             string += str(current.data)+"\n"
             current = current.next_node
         string = string.removesuffix("\n")
+        string = string.removeprefix("\n")
         return string
 
     def sorted_insert(self, value):
