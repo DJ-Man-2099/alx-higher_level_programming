@@ -61,7 +61,7 @@ class Square:
 
     def __str__(self) -> str:
         __doc__ = "returns the str to print"
-        _string = "\n"
+        _string = ""
         if self.__size != 0:
             _string = "\n" * self.__position[1]
             for i in range(self.__size):
