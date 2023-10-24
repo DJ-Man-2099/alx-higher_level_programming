@@ -37,7 +37,7 @@ class Node:
         return self.__next_node
 
     @next_node.setter
-    def next_node(self, value):
+    def next_node(self, value=None):
         __doc__ = 'next_node setter'
         if value is not None and type(value) is not Node:
             raise TypeError("next_node must be a Node object")
