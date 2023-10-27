@@ -1,0 +1,62 @@
+Using ``add-integer``
+-------------------
+
+    >>> add_integer = __import__('0-add_integer').add_integer
+
+Now use it:
+0.check __docs__
+
+    >>> main_docs = __import__('0-add_integer').__doc__
+    >>> main_docs is not None
+    True
+    >>> len(main_docs) > 0
+    True
+    >>> module_docs = __import__('0-add_integer').add_integer.__doc__
+    >>> module_docs is not None
+    True
+    >>> len(module_docs) > 0
+    True
+
+1.optimal case
+
+    >>> add_integer(2,3)
+    5
+
+2.b is None (default is 98)
+
+    >>> add_integer(2)
+    100
+
+3.a and b is float
+
+    >>> add_integer(2.5,3.5)
+    5
+
+4.a is not a number
+
+    >>> add_integer("2.5",3.5)
+    Traceback (most recent call last):
+        ...
+    TypeError: a must be an integer
+
+5.a is None
+
+    >>> add_integer(None)
+    Traceback (most recent call last):
+        ...
+    TypeError: a must be an integer
+
+6.b is not a number
+
+    >>> add_integer(2.5,"3.5")
+    Traceback (most recent call last):
+        ...
+    TypeError: b must be an integer
+
+6.b is None
+
+    >>> add_integer(2,None)
+    Traceback (most recent call last):
+        ...
+    TypeError: b must be an integer
+

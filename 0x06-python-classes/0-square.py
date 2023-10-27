@@ -17,3 +17,6 @@ class Square:
                 for init the class
                 '''
         pass
+
+
+print(Square.__init__.__doc__)
