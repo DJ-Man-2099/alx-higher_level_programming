@@ -6,7 +6,7 @@ Using Tests to check task if successful
 """
 
 
-def matrix_divided(matrix, div) -> list[list[int | float]]:
+def matrix_divided(matrix, div):
     """
     This Function divides all elements of a matrix
 
