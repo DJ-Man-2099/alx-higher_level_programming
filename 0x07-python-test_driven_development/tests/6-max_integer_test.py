@@ -15,6 +15,7 @@ class TestMaxInteger(unittest.TestCase):
         checks if it calculated max correctly
         """
         self.assertEqual(max_integer([1, 2, 3]), 3)
+        self.assertEqual(max_integer([3, 2, 1]), 3)
     
     def test_empty_list(self):
         """
