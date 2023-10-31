@@ -1,0 +1,39 @@
+Using ``say_my_name``
+-------------------
+
+    >>> say_my_name = __import__('3-say_my_name').say_my_name
+
+Now use it:
+0.check __docs__
+
+    >>> main_docs = __import__('3-say_my_name').__doc__
+    >>> main_docs is not None
+    True
+    >>> len(main_docs) > 0
+    True
+    >>> module_docs = __import__('3-say_my_name').say_my_name.__doc__
+    >>> module_docs is not None
+    True
+    >>> len(module_docs) > 0
+    True
+
+1.optimal case
+
+    >>> say_my_name("John", "Smith")
+    My name is John Smith
+    >>> say_my_name("Bob")
+    My name is Bob 
+
+2.first_name is of wrong type
+
+    >>> say_my_name(12, "White")
+    Traceback (most recent call last):
+        ...
+    TypeError: first_name must be a string
+
+2.last_name is of wrong type
+
+    >>> say_my_name("12", 2.5)
+    Traceback (most recent call last):
+        ...
+    TypeError: last_name must be a string
