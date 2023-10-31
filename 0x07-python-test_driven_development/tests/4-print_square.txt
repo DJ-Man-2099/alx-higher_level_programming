@@ -1,0 +1,60 @@
+Using ``print_square``
+-------------------
+
+    >>> print_square = __import__('4-print_square').print_square
+
+Now use it:
+0.check __docs__
+
+    >>> main_docs = __import__('4-print_square').__doc__
+    >>> main_docs is not None
+    True
+    >>> len(main_docs) > 0
+    True
+    >>> module_docs = __import__('4-print_square').print_square.__doc__
+    >>> module_docs is not None
+    True
+    >>> len(module_docs) > 0
+    True
+
+1.optimal case
+
+    >>> print_square(4)
+    ####
+    ####
+    ####
+    ####
+    >>> print_square(10)
+    ##########
+    ##########
+    ##########
+    ##########
+    ##########
+    ##########
+    ##########
+    ##########
+    ##########
+    ##########
+    >>> print_square(0)
+    
+
+3.size is of wrong type
+
+    >>> print_square(1.5)
+    Traceback (most recent call last):
+        ...
+    TypeError: size must be an integer
+
+4.size is less than 0
+
+    >>> print_square(-2)
+    Traceback (most recent call last):
+        ...
+    ValueError: size must be >= 0
+
+5.size is of wrong type and less than 0 (Precedence)
+
+    >>> print_square(-2.5)
+    Traceback (most recent call last):
+        ...
+    TypeError: size must be an integer
