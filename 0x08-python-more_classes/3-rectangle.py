@@ -62,9 +62,10 @@ class Rectangle:
         prints Rectangle
         """
         string = ""
-        for row in range(self.height):
-            for column in range(self.width):
-                string += "#"
-            if row != self.height - 1:
-                string += "\n"
+        if self.height and self.width:
+            for row in range(self.height):
+                for column in range(self.width):
+                    string += "#"
+                if row != self.height - 1:
+                    string += "\n"
         return string
