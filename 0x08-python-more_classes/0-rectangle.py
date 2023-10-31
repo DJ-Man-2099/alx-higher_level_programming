@@ -4,12 +4,14 @@
 1st Task Module
 """
 
+
 class Rectangle:
-	"""
-	Class that defines a rectangle
-	"""
-	def __init__(self) -> None:
-		"""
-		init function
-		"""
-		pass
+    """
+    Class that defines a rectangle
+    """
+
+    def __init__(self) -> None:
+        """
+        init function
+        """
+        pass
