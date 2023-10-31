@@ -1,5 +1,9 @@
 #!/usr/bin/python3
 
+"""
+1st Task Module
+"""
+
 class Rectangle:
 	"""
 	Class that defines a rectangle
