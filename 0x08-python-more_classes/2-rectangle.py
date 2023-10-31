@@ -53,4 +53,6 @@ class Rectangle:
         """
         calculates perimeter
         """
+        if not self.width or not self.height:
+            return 0
         return 2 * (self.width + self.height)
