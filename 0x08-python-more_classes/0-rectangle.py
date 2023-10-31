@@ -5,4 +5,7 @@ class Rectangle:
 	Class that defines a rectangle
 	"""
 	def __init__(self) -> None:
+		"""
+		init function
+		"""
 		pass
