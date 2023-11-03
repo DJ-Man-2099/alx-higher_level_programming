@@ -4,11 +4,24 @@ Optional Task 2 Module
 """
 
 
+from typing import Any
+
+
 class LockedClass:
     """
     LockedClass
     only the "first_name" attribute is allowed
     """
+
+    def __getattribute__(self, __name: str) -> Any:
+        """
+        Overriding the attribute setter
+        """
+        if __name == "first_name":
+            object.__getattribute__(self, __name)
+        else:
+            raise AttributeError(
+                f"'LockedClass' object has no attribute '{__name}'")
 
     def __setattr__(self, key, value):
         """
