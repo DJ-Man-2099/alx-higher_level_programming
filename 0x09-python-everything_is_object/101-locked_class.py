@@ -16,3 +16,6 @@ class LockedClass:
         """
         if key == "first_name":
             object.__setattr__(self, key, value)
+        else:
+            raise AttributeError(
+                f"'LockedClass' object has no attribute '{key}'")
