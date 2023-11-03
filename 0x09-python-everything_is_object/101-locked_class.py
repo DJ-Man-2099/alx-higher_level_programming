@@ -4,16 +4,13 @@ Optional Task 2 Module
 """
 
 
-from typing import Any
-
-
 class LockedClass:
     """
     LockedClass
     only the "first_name" attribute is allowed
     """
 
-    def __getattribute__(self, __name: str) -> Any:
+    def __getattribute__(self, __name: str):
         """
         Overriding the attribute setter
         """
