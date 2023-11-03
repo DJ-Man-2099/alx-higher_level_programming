@@ -32,6 +32,11 @@ Now use it:
     >>> add_integer(2.5,3.5)
     5
 
+3.a and b is float
+
+    >>> add_integer(243544843168.55555555,154513513.55555555555555)
+    5
+
 4.a is not a number
 
     >>> add_integer("2.5",3.5)
@@ -59,4 +64,3 @@ Now use it:
     Traceback (most recent call last):
         ...
     TypeError: b must be an integer
-

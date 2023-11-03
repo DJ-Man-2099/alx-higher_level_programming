@@ -18,12 +18,12 @@ def matrix_divided(matrix, div):
     if not div:
         raise ZeroDivisionError("division by zero")
     if type(matrix) is not list or\
-        not len(matrix) or\
-        any(type(row) is not list for row in matrix) or\
-        any(check_if_is_not_number(i) for row in matrix for i in row):
+            not len(matrix) or\
+            any(type(row) is not list for row in matrix) or\
+            any(check_if_is_not_number(i) for row in matrix for i in row):
         raise TypeError(
             "matrix must be a matrix (list of lists) of integers/floats")
-    
+
     row_size = len(matrix[0])
     if any(len(row) != row_size for row in matrix):
         raise TypeError("Each row of the matrix must have the same size")
