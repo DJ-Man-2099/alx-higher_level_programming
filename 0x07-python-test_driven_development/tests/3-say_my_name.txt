@@ -38,7 +38,7 @@ Now use it:
         ...
     TypeError: last_name must be a string
 
-4.not args
+4.no args
     >>> say_my_name()
     Traceback (most recent call last):
         ...
