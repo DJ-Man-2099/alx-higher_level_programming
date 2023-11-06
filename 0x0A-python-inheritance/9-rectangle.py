@@ -35,4 +35,4 @@ class Rectangle(BaseGeometry):
         """
         prints Rectangle Description
         """
-        print(self)
+        print(f"[Rectangle] {self.__width}/{self.__height}")
