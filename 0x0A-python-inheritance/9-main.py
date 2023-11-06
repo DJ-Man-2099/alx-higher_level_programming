@@ -3,6 +3,6 @@ Rectangle = __import__('9-rectangle').Rectangle
 
 r = Rectangle(3, 5)
 
-r.print()
 print(r)
+print(str(r))
 print(r.area())

@@ -30,9 +30,3 @@ class Rectangle(BaseGeometry):
         describes Rectangle
         """
         return f"[Rectangle] {self.__width}/{self.__height}"
-
-    def print(self):
-        """
-        prints Rectangle Description
-        """
-        print(f"[Rectangle] {self.__width}/{self.__height}")
