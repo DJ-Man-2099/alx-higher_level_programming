@@ -6,6 +6,7 @@ Rectangle = __import__('8-rectangle').Rectangle
 r = Rectangle(3, 5)
 
 print(r)
+r.__width = 0
 print(dir(r))
 
 try:
