@@ -23,4 +23,3 @@ def text_indentation(text) -> None:
     for index in range(len(string_array)-1):
         print(string_array[index].strip())
     print(string_array[-1].strip(), end="")
-        
