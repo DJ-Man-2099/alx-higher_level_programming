@@ -13,4 +13,4 @@ def add_attribute(obj, name, value):
        or type(name) is not str or value is None\
             or hasattr(obj, name):
         raise TypeError("can't add new attribute")
-    setattr(obj, name, value)
+    return setattr(obj, name, value)
