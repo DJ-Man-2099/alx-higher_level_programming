@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-7st Module
+8st Module
 """
 
 
