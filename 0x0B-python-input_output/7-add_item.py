@@ -20,5 +20,5 @@ if __name__ == "__main__":
         old_list = []
     else:
         old_list = load_from_json_file("add_item.json")
-    old_list.extend(sys.argv)
+    old_list.extend(sys.argv[1:])
     save_to_json_file(old_list, "add_item.json")
