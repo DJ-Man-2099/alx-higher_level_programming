@@ -12,6 +12,10 @@ class TestBaseClass(unittest.TestCase):
     this class checks for every detail in the class
     """
 
+    def setUp(self):
+        # Reset the class ids before each test
+        Base.reset_before_tests()
+
     def test_class_doc(self):
         """
         Testing docs exist
