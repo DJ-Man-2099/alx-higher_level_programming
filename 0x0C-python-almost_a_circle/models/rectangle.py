@@ -3,7 +3,7 @@
 Class Rectangle inherits from Base.
 """
 from models.base import Base
-from models.helpers import get_element
+from help_functions.get_element import get_element
 
 
 class Rectangle(Base):
