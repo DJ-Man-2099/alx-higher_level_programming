@@ -19,40 +19,32 @@ class TestRectangleClass(unittest.TestCase):
         # Reset the class ids before each test
         Base.reset_before_tests()
 
-    def test_display_doc(self):
+    def test_str_doc(self):
         """
-        Testing display() docs exist
+        Testing __str__() docs exist
         """
-        self.assertIsNotNone(Rectangle.display.__doc__)
-        self.assertNotEqual(Rectangle.display.__doc__, "")
+        self.assertIsNotNone(Rectangle.__str__.__doc__)
+        self.assertNotEqual(Rectangle.__str__.__doc__, "")
 
-    def test_display(self):
+    def test_str(self):
         """
-        Testing display
+        Testing __str__
         """
-        captured_output = StringIO()
-        sys.stdout = captured_output
-
-        r1 = Rectangle(4, 6)
-        r1.display()
-        printed_output = captured_output.getvalue()
-        self.assertEqual(printed_output, """####
-####
-####
-####
-####
-####
-""")
-        print("---")
 
         captured_output = StringIO()
         sys.stdout = captured_output
-        r1 = Rectangle(2, 2)
-        r1.display()
+
+        r1 = Rectangle(4, 6, 2, 1, 12)
+        print(r1)
         printed_output = captured_output.getvalue()
-        self.assertEqual(printed_output, """##
-##
-""")
+        self.assertEqual(printed_output, "[Rectangle] (12) 2/1 - 4/6\n")
+
+        captured_output = StringIO()
+        sys.stdout = captured_output
+        r2 = Rectangle(5, 5, 1)
+        print(r2)
+        printed_output = captured_output.getvalue()
+        self.assertEqual(printed_output, "[Rectangle] (1) 1/0 - 5/5\n")
 
 
 if __name__ == '__main__':

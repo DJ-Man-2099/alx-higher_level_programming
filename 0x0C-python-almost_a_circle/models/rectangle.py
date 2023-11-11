@@ -105,18 +105,17 @@ class Rectangle(Base):
         the Rectangle instance
         with the character #
         """
-        print(self)
-
-    def __str__(self):
-        """
-        creates the string rep
-        of a Rectangle
-        with the character #
-        """
         str = ""
         for i in range(self.height):
             for j in range(self.width):
                 str += "#"
             if i < self.height - 1:
                 str += "\n"
-        return str
+        print(str)
+
+    def __str__(self):
+        """
+        creates the string rep
+        of a Rectangle
+        """
+        return f"[Rectangle] ({self.id}) {self.x}/{self.y} - {self.width}/{self.height}"
