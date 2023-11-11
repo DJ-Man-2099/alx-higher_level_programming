@@ -122,12 +122,17 @@ class Rectangle(Base):
         """
         return f"[Rectangle] ({self.id}) {self.x}/{self.y} - {self.width}/{self.height}"
 
-    def update(self, *args):
+    def update(self, *args, **kwargs):
         """
         updates the Rectangle instance
         """
-        self.id = get_element(args, 0, self.id)
-        self.width = get_element(args, 1, self.width)
-        self.height = get_element(args, 2, self.height)
-        self.x = get_element(args, 3, self.x)
-        self.y = get_element(args, 4, self.y)
+        if args:
+            self.id = get_element(args, 0, self.id)
+            self.width = get_element(args, 1, self.width)
+            self.height = get_element(args, 2, self.height)
+            self.x = get_element(args, 3, self.x)
+            self.y = get_element(args, 4, self.y)
+        else:
+            for key, value in kwargs.items():
+                # TODO: validate Keys
+                setattr(self, key, value or getattr(self, key))
