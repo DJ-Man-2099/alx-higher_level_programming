@@ -1,5 +1,5 @@
 #!/usr/bin/python
-"""Unittest for Base Class
+"""Unittest for Rectangle Class
 """
 import unittest
 from models.rectangle import Rectangle, __doc__
@@ -57,7 +57,7 @@ class TestRectangleClass(unittest.TestCase):
         """
         Testing accessibilty of private attrib
         """
-        b1 = Rectangle(0, 0)
+        b1 = Rectangle(1, 1)
         with self.assertRaises(AttributeError):
             b1.__nb_objects
         with self.assertRaises(AttributeError):
