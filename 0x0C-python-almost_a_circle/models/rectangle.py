@@ -3,6 +3,7 @@
 Class Rectangle inherits from Base.
 """
 from models.base import Base
+from models.helpers import get_element
 
 
 class Rectangle(Base):
@@ -120,3 +121,13 @@ class Rectangle(Base):
         of a Rectangle
         """
         return f"[Rectangle] ({self.id}) {self.x}/{self.y} - {self.width}/{self.height}"
+
+    def update(self, *args):
+        """
+        updates the Rectangle instance
+        """
+        self.id = get_element(args, 0, self.id)
+        self.width = get_element(args, 1, self.width)
+        self.height = get_element(args, 2, self.height)
+        self.x = get_element(args, 3, self.x)
+        self.y = get_element(args, 4, self.y)

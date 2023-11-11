@@ -24,6 +24,7 @@ class Base:
     def reset_before_tests():
         """
         Resets The __nb_objects
+
         FOR TESTING ONLY
         """
         Base.__nb_objects = 0
