@@ -106,9 +106,10 @@ class Rectangle(Base):
         with the character #
         """
         str = ""
+        str += "\n" * self.y
         for i in range(self.height):
-            for j in range(self.width):
-                str += "#"
+            str += " " * self.x
+            str += "#" * self.width
             if i < self.height - 1:
                 str += "\n"
         print(str)
