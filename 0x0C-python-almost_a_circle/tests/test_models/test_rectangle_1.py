@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 """Unittest for Rectangle Class
 """
 import unittest
