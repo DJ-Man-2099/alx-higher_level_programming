@@ -18,25 +18,25 @@ class TestBaseClass(unittest.TestCase):
         # Reset the class ids before each test
         Base.reset_before_tests()
 
-    def test_save_to_file_doc(self):
+    def test_create_doc(self):
         """
         Testing docs exist
         """
-        self.assertIsNotNone(Base.save_to_file.__doc__)
-        self.assertNotEqual(Base.save_to_file.__doc__, "")
+        self.assertIsNotNone(Base.create.__doc__)
+        self.assertNotEqual(Base.create.__doc__, "")
 
-    def test_save_to_file(self):
+    def test_create(self):
         """
-        Testing save_to_file()
+        Testing create()
         """
         helpers = Helpers()
-        r1 = Rectangle(10, 7, 2, 8)
-        r2 = Rectangle(2, 4)
-        Rectangle.save_to_file([r1, r2])
-
-        with open("Rectangle.json", "r") as file:
-            helpers.stdout(lambda: print(file.read()),
-                           '[{"x": 2, "y": 8, "id": 1, "height": 7, "width": 10}, {"x": 0, "y": 0, "id": 2, "height": 4, "width": 2}]\n')
+        r1 = Rectangle(3, 5, 1)
+        r1_dictionary = r1.to_dictionary()
+        r2 = Rectangle.create(**r1_dictionary)
+        helpers.stdout(lambda: print(r1), "[Rectangle] (1) 1/0 - 3/5\n")
+        helpers.stdout(lambda: print(r2), "[Rectangle] (1) 1/0 - 3/5\n")
+        self.assertIsNot(r1, r2)
+        self.assertNotEqual(r1, r2)
 
 
 if __name__ == '__main__':

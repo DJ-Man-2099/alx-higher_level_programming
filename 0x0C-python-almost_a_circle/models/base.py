@@ -50,3 +50,25 @@ class Base:
         file_name = f"{cls.__name__}.json"
         with open(file_name, "w") as file:
             file.write(Base.to_json_string(list_to_json))
+
+    @staticmethod
+    def from_json_string(json_string):
+        """
+        returns the list of the JSON string representation json_string
+        """
+        list_to_return = []
+        if json_string:
+            list_to_return = json.loads(json_string)
+        return list_to_return
+
+    @classmethod
+    def create(cls, **dictionary):
+        """
+        returns an instance with all attributes already set
+        """
+        # TODO: find better initializing method
+        dummy = cls(1) \
+            if cls.__name__ == "Square"\
+            else cls(1, 1)
+        dummy.update(**dictionary)
+        return dummy

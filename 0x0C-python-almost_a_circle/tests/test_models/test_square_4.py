@@ -38,7 +38,8 @@ class TestSquareClass(unittest.TestCase):
         self.assertDictEqual(
             s1_dictionary, {'x': 2, 'y': 1, 'id': 1, 'size': 10})
         self.assertEqual(type(s1_dictionary), dict)
-
+        helpers.stdout(lambda: print(s1_dictionary),
+                       "{'id': 1, 'x': 2, 'size': 10, 'y': 1}\n")
         s2 = Square(1, 1)
         helpers.stdout(lambda: print(s2), "[Square] (2) 1/0 - 1\n")
         s2.update(**s1_dictionary)

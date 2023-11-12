@@ -42,7 +42,7 @@ class TestBaseClass(unittest.TestCase):
                        '[]\n')
         self.assertEqual(type(json_dictionary), str)
         helpers.stdout(lambda: print(json_dictionary),
-                       '[{"id": 1, "width": 10, "height": 7, "x": 2, "y": 8}]\n')
+                       '[{"x": 2, "y": 8, "id": 1, "height": 7, "width": 10}]\n')
 
 
 if __name__ == '__main__':
