@@ -4,6 +4,7 @@ the “base” of all other classes in this project.
 """
 
 
+from genericpath import exists
 import json
 
 
@@ -80,10 +81,11 @@ class Base:
         returns a list of instances
         """
         list_of_instances = []
-        with open(f"{cls.__name__}.json", "r") as file:
-            string = file.read()
-            list_of_instances = Base.from_json_string(string)
-            if list_of_instances:
-                list_of_instances = list(map(
-                    lambda i: cls.create(**i), list_of_instances))
+        if exists(f"{cls.__name__}.json"):
+            with open(f"{cls.__name__}.json") as file:
+                string = file.read()
+                list_of_instances = Base.from_json_string(string)
+                if list_of_instances:
+                    list_of_instances = list(map(
+                        lambda i: cls.create(**i), list_of_instances))
         return list_of_instances
