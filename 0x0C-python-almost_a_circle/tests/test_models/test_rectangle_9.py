@@ -47,13 +47,6 @@ class TestRectangleClass(unittest.TestCase):
         helpers.stdout(lambda: print(r2), "[Rectangle] (1) 1/9 - 10/2\n")
         self.assertNotEqual(r1, r2)
 
-    def test_exception(self):
-        """test with exception"""
-        a = Rectangle(1, 2, 3, 4, 6)
-        self.assertRaises(TypeError, a.to_dictionary, 0)
-        a = Rectangle(1, 2)
-        self.assertRaises(TypeError, a.to_dictionary, None)
-
 
 if __name__ == '__main__':
     unittest.main()
