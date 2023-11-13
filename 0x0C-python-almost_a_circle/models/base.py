@@ -61,8 +61,10 @@ class Base:
         """
         def square_csv(square): return [
             square.id, square.size, square.x, square.y]
+
         def rectangle_csv(rectangle): return [
-            rectangle.id, rectangle.width, rectangle.height, rectangle.x, rectangle.y]
+            rectangle.id, rectangle.width,
+            rectangle.height, rectangle.x, rectangle.y]
         list_to_json = list(
             map(lambda obj: square_csv(obj)
                 if cls.__name__ == "Square"
