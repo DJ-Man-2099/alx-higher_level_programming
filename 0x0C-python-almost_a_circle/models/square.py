@@ -50,7 +50,8 @@ class Square(Rectangle):
             self.y = get_element(args, 3, self.y)
         else:
             for key, value in kwargs.items():
-                setattr(self, key, value or getattr(self, key))
+                if key in ["id", "size", "x", "y"]:
+                    setattr(self, key, value or getattr(self, key))
 
     def to_dictionary(self):
         """

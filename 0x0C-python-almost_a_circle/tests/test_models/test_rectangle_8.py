@@ -80,6 +80,10 @@ class TestRectangleClass(unittest.TestCase):
             r1.update(height="1")
             self.assertEqual(str(e.exception), "height must be an integer")
 
+        with self.assertRaises(AttributeError) as e:
+            r1.update(david=5)
+            print(r1.david)
+
 
 if __name__ == '__main__':
     unittest.main()

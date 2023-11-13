@@ -38,6 +38,14 @@ class TestBaseClass(unittest.TestCase):
         self.assertIsNot(r1, r2)
         self.assertNotEqual(r1, r2)
 
+    def test_create_missing(self):
+        """
+        test create without some attributes
+        """
+        helpers = Helpers()
+        r = Rectangle.create()
+        helpers.stdout(lambda: print(r), "[Rectangle] (1) 0/0 - 1/1\n")
+
 
 if __name__ == '__main__':
     unittest.main()

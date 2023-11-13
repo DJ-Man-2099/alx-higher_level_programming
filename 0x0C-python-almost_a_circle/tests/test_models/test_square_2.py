@@ -41,6 +41,10 @@ class TestSquareClass(unittest.TestCase):
             s1.size = "9"
         self.assertEqual(str(terror.exception), "width must be an integer")
 
+        with self.assertRaises(ValueError) as terror:
+            s2 = Square(0)
+        self.assertEqual(str(terror.exception), "width must be > 0")
+
 
 if __name__ == '__main__':
     unittest.main()

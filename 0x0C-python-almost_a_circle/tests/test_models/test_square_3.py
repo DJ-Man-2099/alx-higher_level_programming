@@ -48,6 +48,10 @@ class TestSquareClass(unittest.TestCase):
         s1.update(size=7, id=89, y=1)
         helper.stdout(lambda: print(s1), "[Square] (89) 12/1 - 7\n")
 
+        with self.assertRaises(AttributeError) as e:
+            s1.update(david=5)
+            print(s1.david)
+
 
 if __name__ == '__main__':
     unittest.main()
