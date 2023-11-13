@@ -4,7 +4,7 @@
 import unittest
 from models.square import Square, __doc__
 from models.base import Base, __doc__
-from tests.helpers import Helpers
+from help_functions.helpers import Helpers
 
 
 class TestSquareClass(unittest.TestCase):

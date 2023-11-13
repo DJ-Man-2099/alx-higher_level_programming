@@ -3,7 +3,7 @@
 """
 import unittest
 
-from tests.helpers import Helpers
+from help_functions.helpers import Helpers
 from models.rectangle import Rectangle, __doc__
 from models.base import Base, __doc__
 

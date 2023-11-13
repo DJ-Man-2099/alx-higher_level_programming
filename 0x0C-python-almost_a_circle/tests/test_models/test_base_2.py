@@ -4,7 +4,7 @@
 import unittest
 from models.base import Base
 from models.rectangle import Rectangle
-from tests.helpers import Helpers
+from help_functions.helpers import Helpers
 
 
 class TestBaseClass(unittest.TestCase):

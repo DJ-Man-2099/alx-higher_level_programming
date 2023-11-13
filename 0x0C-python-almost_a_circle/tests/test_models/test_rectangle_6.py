@@ -6,7 +6,7 @@ import sys
 import unittest
 from models.rectangle import Rectangle, __doc__
 from models.base import Base, __doc__
-from tests.helpers import Helpers
+from help_functions.helpers import Helpers
 
 
 class TestRectangleClass(unittest.TestCase):
