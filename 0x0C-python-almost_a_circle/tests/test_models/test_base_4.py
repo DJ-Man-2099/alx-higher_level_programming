@@ -43,6 +43,13 @@ class TestBaseClass(unittest.TestCase):
         helpers.stdout(lambda: print("[{}] {}".format(type(list_output), list_output)),
                        "[<class 'list'>] [{'id': 89, 'width': 10, 'height': 4}, {'id': 7, 'width': 1, 'height': 7}]\n")
 
+    def test_is_empty(self):
+        """
+        Test Empty Case
+        """
+        self.assertEqual(Rectangle.from_json_string(""), [])
+        self.assertEqual(Rectangle.from_json_string(None), [])
+
 
 if __name__ == '__main__':
     unittest.main()

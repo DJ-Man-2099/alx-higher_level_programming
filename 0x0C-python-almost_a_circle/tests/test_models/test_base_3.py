@@ -46,6 +46,17 @@ class TestBaseClass(unittest.TestCase):
             helpers.stdout(lambda: print(file.read()),
                            '[{"x": 2, "y": 8, "id": 1, "height": 7, "width": 10}, {"x": 0, "y": 0, "id": 3, "height": 4, "width": 3}]\n')
 
+    def test_empty(self):
+        """
+        Test Empty Case
+        """
+        helpers = Helpers()
+        Rectangle.save_to_file(None)
+
+        with open("Rectangle.json", "r") as file:
+            helpers.stdout(lambda: print(file.read()),
+                           '[]\n')
+
 
 if __name__ == '__main__':
     unittest.main()
