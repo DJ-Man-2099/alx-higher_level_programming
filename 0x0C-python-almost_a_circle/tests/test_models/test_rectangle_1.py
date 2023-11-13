@@ -71,6 +71,35 @@ class TestRectangleClass(unittest.TestCase):
         with self.assertRaises(AttributeError):
             Rectangle.__nb_objects
 
+    def test_init_validation(self):
+        """
+        Testing validation
+        """
+        with self.assertRaises(TypeError) as e:
+            r1 = Rectangle("1", 1)
+            self.assertEqual(str(e.exception), "width must be an integer")
+        with self.assertRaises(ValueError) as e:
+            r1 = Rectangle(0, 1)
+            self.assertEqual(str(e.exception), "width must be > 0")
+        with self.assertRaises(TypeError) as e:
+            r1 = Rectangle(1, "1")
+            self.assertEqual(str(e.exception), "height must be an integer")
+        with self.assertRaises(ValueError) as e:
+            r1 = Rectangle(1, 0)
+            self.assertEqual(str(e.exception), "height must be > 0")
+        with self.assertRaises(TypeError) as e:
+            r1 = Rectangle(1, 1, "0")
+            self.assertEqual(str(e.exception), "x must be an integer")
+        with self.assertRaises(ValueError) as e:
+            r1 = Rectangle(1, 1, -1)
+            self.assertEqual(str(e.exception), "x must be >= 0")
+        with self.assertRaises(TypeError) as e:
+            r1 = Rectangle(1, 1, 1, "-1")
+            self.assertEqual(str(e.exception), "y must be an integer")
+        with self.assertRaises(ValueError) as e:
+            r1 = Rectangle(1, 1, 1, -1)
+            self.assertEqual(str(e.exception), "y must be >= 0")
+
 
 if __name__ == '__main__':
     unittest.main()
