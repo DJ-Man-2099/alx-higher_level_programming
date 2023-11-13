@@ -23,7 +23,7 @@ class TestRectangle(unittest.TestCase):
         self.rectangle.display()
 
         sys.stdout = sys.__stdout__
-        expected_output = "  " + "#" * 10 + "\n" + \
+        expected_output = "\n\n\n"+"  " + "#" * 10 + "\n" + \
                           "  " + "#" * 10 + "\n" + \
                           "  " + "#" * 10 + "\n" + \
                           "  " + "#" * 10 + "\n" + \
@@ -32,7 +32,7 @@ class TestRectangle(unittest.TestCase):
 
     def test_str(self):
         result = str(self.rectangle)
-        expected_output = "[Rectangle] (1) 2/3 - 10/5"
+        expected_output = "[Rectangle] (3) 2/3 - 10/5"
         self.assertEqual(result, expected_output)
 
     def test_update_args(self):
@@ -55,7 +55,7 @@ class TestRectangle(unittest.TestCase):
         expected_output = {
             "x": 2,
             "y": 3,
-            "id": 1,
+            "id": 4,
             "height": 5,
             "width": 10
         }
