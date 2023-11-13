@@ -106,6 +106,17 @@ class TestRectangleClass(unittest.TestCase):
         """
         self.assertTrue(issubclass(Rectangle, Base) and Rectangle is not Base)
 
+    def test_getters_setters(self):
+        """
+        check if getters/setters work
+        """
+        r = Rectangle(1, 2, 3, 4, 5)
+        self.assertEqual(r.id, 5)
+        self.assertEqual(r.width, 1)
+        self.assertEqual(r.height, 2)
+        self.assertEqual(r.x, 3)
+        self.assertEqual(r.y, 4)
+
 
 if __name__ == '__main__':
     unittest.main()
