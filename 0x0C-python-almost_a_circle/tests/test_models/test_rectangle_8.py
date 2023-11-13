@@ -70,6 +70,16 @@ class TestRectangleClass(unittest.TestCase):
         printed_output = captured_output.getvalue()
         self.assertEqual(printed_output, "[Rectangle] (99) 1/3 - 4/2\n")
 
+    def test_validation(self):
+        """
+        check validation
+        """
+        r1 = Rectangle(10, 10, 10, 10)
+
+        with self.assertRaises(TypeError) as e:
+            r1.update(height="1")
+            self.assertEqual(str(e.exception), "height must be an integer")
+
 
 if __name__ == '__main__':
     unittest.main()
