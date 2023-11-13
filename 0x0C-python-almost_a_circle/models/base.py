@@ -83,6 +83,7 @@ class Base:
         with open(f"{cls.__name__}.json", "r") as file:
             string = file.read()
             list_of_instances = Base.from_json_string(string)
-            list_of_instances = list(map(
-                lambda i: cls.create(**i), list_of_instances))
+            if list_of_instances:
+                list_of_instances = list(map(
+                    lambda i: cls.create(**i), list_of_instances))
         return list_of_instances
