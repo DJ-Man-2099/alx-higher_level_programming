@@ -45,6 +45,11 @@ class TestSquareClass(unittest.TestCase):
             s2 = Square(0)
         self.assertEqual(str(terror.exception), "width must be > 0")
 
+        def test_mandatory_size(self):
+            """Test that width is a mandatory arg"""
+            with self.assertRaises(TypeError):
+                s = Square()
+
 
 if __name__ == '__main__':
     unittest.main()
