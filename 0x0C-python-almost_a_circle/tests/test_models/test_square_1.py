@@ -2,6 +2,7 @@
 """Unittest for Square Class
 """
 import unittest
+from models.rectangle import Rectangle, __doc__
 from models.square import Square, __doc__
 from models.base import Base, __doc__
 from help_functions.helpers import Helpers
@@ -73,6 +74,13 @@ class TestSquareClass(unittest.TestCase):
  ###
  ###
 """)
+
+    def test_is_subclass(self):
+        """
+        check if Square is a subclass of Rectangle
+        """
+        self.assertTrue(issubclass(Square, Rectangle)
+                        and Square is not Rectangle)
 
 
 if __name__ == '__main__':

@@ -100,6 +100,12 @@ class TestRectangleClass(unittest.TestCase):
             r1 = Rectangle(1, 1, 1, -1)
             self.assertEqual(str(e.exception), "y must be >= 0")
 
+    def test_is_subclass(self):
+        """
+        check if Rectangle is a subclass of Base
+        """
+        self.assertTrue(issubclass(Rectangle, Base) and Rectangle is not Base)
+
 
 if __name__ == '__main__':
     unittest.main()
