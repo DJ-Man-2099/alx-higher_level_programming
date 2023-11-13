@@ -77,6 +77,40 @@ class TestRectangleClass(unittest.TestCase):
         printed_output = captured_output.getvalue()
         self.assertEqual(printed_output, "[Rectangle] (89) 4/5 - 2/3\n")
 
+    def test_validation(self):
+        """
+        check for zeros
+        """
+        r1 = Rectangle(1, 1)
+
+        with self.assertRaises(TypeError) as e:
+            r1.update(0, "1")
+            self.assertEqual(str(e.exception), "width must be an integer")
+        with self.assertRaises(ValueError) as e:
+            r1 = r1.update(0, 0)
+            self.assertEqual(str(e.exception), "width must be > 0")
+
+        with self.assertRaises(TypeError) as e:
+            r1.update(0, 1, "1")
+            self.assertEqual(str(e.exception), "height must be an integer")
+        with self.assertRaises(ValueError) as e:
+            r1 = r1.update(0, 1, 0)
+            self.assertEqual(str(e.exception), "height must be > 0")
+
+        with self.assertRaises(TypeError) as e:
+            r1.update(0, 1, 1, "0")
+            self.assertEqual(str(e.exception), "x must be an integer")
+        with self.assertRaises(ValueError) as e:
+            r1 = r1.update(0, 1, 0, -1)
+            self.assertEqual(str(e.exception), "x must be >= 0")
+
+        with self.assertRaises(TypeError) as e:
+            r1.update(0, 1, 1, 0, "0")
+            self.assertEqual(str(e.exception), "y must be an integer")
+        with self.assertRaises(ValueError) as e:
+            r1 = r1.update(0, 1, 0, 0, -1)
+            self.assertEqual(str(e.exception), "y must be >= 0")
+
 
 if __name__ == '__main__':
     unittest.main()

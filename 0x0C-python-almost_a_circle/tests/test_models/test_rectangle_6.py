@@ -6,6 +6,7 @@ import sys
 import unittest
 from models.rectangle import Rectangle, __doc__
 from models.base import Base, __doc__
+from tests.helpers import Helpers
 
 
 class TestRectangleClass(unittest.TestCase):
@@ -23,6 +24,7 @@ class TestRectangleClass(unittest.TestCase):
         """
         Testing display after update
         """
+        helpers = Helpers()
         captured_output = StringIO()
         sys.stdout = captured_output
 
@@ -33,7 +35,6 @@ class TestRectangleClass(unittest.TestCase):
   ##
   ##
 """)
-        print("---")
 
         captured_output = StringIO()
         sys.stdout = captured_output
@@ -43,6 +44,9 @@ class TestRectangleClass(unittest.TestCase):
         self.assertEqual(printed_output, """ ###
  ###
 """)
+
+        r = Rectangle(1, 1)
+        helpers.stdout(r.display, "#\n")
 
 
 if __name__ == '__main__':
