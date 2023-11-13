@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 """Unittest for Base Class
 """
+from genericpath import exists
+import os
 import unittest
 from models.base import Base
 from models.rectangle import Rectangle
@@ -69,6 +71,17 @@ class TestBaseClass(unittest.TestCase):
         square = list_squares_output[1]
         helpers.stdout(lambda: print(square),
                        "[Square] (6) 9/1 - 7\n")
+
+    def test_not_exist(self):
+        """
+        test response on no file
+        """
+        for file in ["Rectangle.json", "Square.json"]:
+            if exists(file):
+                os.remove(file)
+
+        self.assertEqual(Rectangle.load_from_file(), [])
+        self.assertEqual(Square.load_from_file(), [])
 
 
 if __name__ == '__main__':
