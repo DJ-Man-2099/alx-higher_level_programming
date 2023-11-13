@@ -7,6 +7,7 @@ the “base” of all other classes in this project.
 import csv
 from genericpath import exists
 import json
+import turtle
 
 
 class Base:
@@ -137,3 +138,41 @@ class Base:
                     list_of_instances = list(map(
                         lambda i: cls.create(**i), list_of_instances))
         return list_of_instances
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        """
+        opens a window and draws all the Rectangles and Squares
+        """
+        window = turtle.Screen()
+        t = turtle.Turtle()
+
+        t.pencolor("red")
+        for rect in list_rectangles:
+            t.penup()
+            t.setposition(rect.x, rect.y)
+            t.pendown()
+            t.forward(rect.width)
+            t.right(90)
+            t.forward(rect.height)
+            t.right(90)
+            t.forward(rect.width)
+            t.right(90)
+            t.forward(rect.height)
+            t.right(90)
+
+        t.pencolor("blue")
+        for rect in list_squares:
+            t.penup()
+            t.setposition(rect.x, rect.y)
+            t.pendown()
+            t.forward(rect.size)
+            t.right(90)
+            t.forward(rect.size)
+            t.right(90)
+            t.forward(rect.size)
+            t.right(90)
+            t.forward(rect.size)
+            t.right(90)
+
+        window.mainloop()
