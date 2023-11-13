@@ -3,7 +3,7 @@
 """
 import unittest
 
-from help_functions.get_element import get_element
+from help_functions.get_element import get_element, __doc__
 
 
 class TestGetElement(unittest.TestCase):
@@ -12,6 +12,15 @@ class TestGetElement(unittest.TestCase):
 
     this class checks for every detail in the class
     """
+
+    def test_docs_exists(self):
+        """
+        check that docs exist
+        """
+        self.assertIsNotNone(__doc__)
+        self.assertNotEqual(__doc__, "")
+        self.assertIsNotNone(get_element.__doc__)
+        self.assertNotEqual(get_element.__doc__, "")
 
     def test_base(self):
         """
