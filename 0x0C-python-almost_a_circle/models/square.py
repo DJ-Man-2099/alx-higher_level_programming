@@ -40,6 +40,9 @@ class Square(Rectangle):
         self.height = size
 
     def update(self, *args, **kwargs):
+        """
+        updates the self instanse
+        """
         if args:
             self.id = get_element(args, 0, self.id)
             self.size = get_element(args, 1, self.size)
