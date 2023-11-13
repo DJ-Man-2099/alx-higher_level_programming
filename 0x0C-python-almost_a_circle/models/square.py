@@ -47,7 +47,6 @@ class Square(Rectangle):
             self.y = get_element(args, 3, self.y)
         else:
             for key, value in kwargs.items():
-                # TODO: validate Keys
                 setattr(self, key, value or getattr(self, key))
 
     def to_dictionary(self):
