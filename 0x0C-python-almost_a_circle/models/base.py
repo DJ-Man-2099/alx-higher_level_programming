@@ -4,6 +4,7 @@ the “base” of all other classes in this project.
 """
 
 
+import csv
 from genericpath import exists
 import json
 
@@ -53,6 +54,25 @@ class Base:
         with open(file_name, "w") as file:
             file.write(Base.to_json_string(list_to_json))
 
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """
+        writes the JSON string representation of list_objs to a file
+        """
+        def square_csv(square): return [
+            square.id, square.size, square.x, square.y]
+        def rectangle_csv(rectangle): return [
+            rectangle.id, rectangle.width, rectangle.height, rectangle.x, rectangle.y]
+        list_to_json = list(
+            map(lambda obj: square_csv(obj)
+                if cls.__name__ == "Square"
+                else rectangle_csv(obj), list_objs)) \
+            if list_objs else []
+        file_name = f"{cls.__name__}.csv"
+        with open(file_name, "w") as file:
+            writer = csv.writer(file, lineterminator="\n")
+            writer.writerows(list_to_json)
+
     @staticmethod
     def from_json_string(json_string):
         """
@@ -74,6 +94,32 @@ class Base:
             else cls(1, 1)
         dummy.update(**dictionary)
         return dummy
+
+    @classmethod
+    def create_csv(cls, *dictionary):
+        """
+        returns an instance with all attributes already set
+        """
+        # TODO: find better initializing method
+        dummy = cls(1) \
+            if cls.__name__ == "Square"\
+            else cls(1, 1)
+        dictionary = list(map(lambda i: eval(i), dictionary))
+        dummy.update(*dictionary)
+        return dummy
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """
+        returns a list of instances
+        """
+        list_of_instances = []
+        if exists(f"{cls.__name__}.csv"):
+            with open(f"{cls.__name__}.csv") as file:
+                reader = csv.reader(file)
+                for row in reader:
+                    list_of_instances.append(cls.create_csv(*row))
+        return list_of_instances
 
     @classmethod
     def load_from_file(cls):
