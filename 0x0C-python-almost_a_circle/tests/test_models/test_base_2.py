@@ -36,13 +36,20 @@ class TestBaseClass(unittest.TestCase):
         self.assertDictEqual(dictionary,
                              {'x': 2, 'width': 10, 'id': 1, 'height': 7, 'y': 8})
         self.assertEqual(type(dictionary), dict)
+
+        self.assertEqual(type(json_dictionary), str)
+        helpers.stdout(lambda: print(json_dictionary),
+                       '[{"x": 2, "y": 8, "id": 1, "height": 7, "width": 10}]\n')
+
+    def test_empty(self):
+        """
+        Testing Empty
+        """
+        helpers = Helpers()
         helpers.stdout(lambda: print(Base.to_json_string([])),
                        '[]\n')
         helpers.stdout(lambda: print(Base.to_json_string(None)),
                        '[]\n')
-        self.assertEqual(type(json_dictionary), str)
-        helpers.stdout(lambda: print(json_dictionary),
-                       '[{"x": 2, "y": 8, "id": 1, "height": 7, "width": 10}]\n')
 
 
 if __name__ == '__main__':
