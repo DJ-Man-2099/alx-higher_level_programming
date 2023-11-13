@@ -28,6 +28,7 @@ class TestBaseClass(unittest.TestCase):
     def test_save_to_file(self):
         """
         Testing save_to_file()
+        with overwriting
         """
         helpers = Helpers()
         r1 = Rectangle(10, 7, 2, 8)
@@ -37,6 +38,13 @@ class TestBaseClass(unittest.TestCase):
         with open("Rectangle.json", "r") as file:
             helpers.stdout(lambda: print(file.read()),
                            '[{"x": 2, "y": 8, "id": 1, "height": 7, "width": 10}, {"x": 0, "y": 0, "id": 2, "height": 4, "width": 2}]\n')
+
+        r2 = Rectangle(3, 4)
+        Rectangle.save_to_file([r1, r2])
+
+        with open("Rectangle.json", "r") as file:
+            helpers.stdout(lambda: print(file.read()),
+                           '[{"x": 2, "y": 8, "id": 1, "height": 7, "width": 10}, {"x": 0, "y": 0, "id": 3, "height": 4, "width": 3}]\n')
 
 
 if __name__ == '__main__':
