@@ -68,6 +68,7 @@ class TestBaseClass(unittest.TestCase):
         with open("Square.json", "r") as file:
             helpers.stdout(lambda: print(file.read()),
                            '[]\n')
+
         Square.save_to_file([])
 
         with open("Square.json", "r") as file:
