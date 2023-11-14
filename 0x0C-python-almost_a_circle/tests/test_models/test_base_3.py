@@ -54,6 +54,24 @@ class TestBaseClass(unittest.TestCase):
             helpers.stdout(lambda: print(file.read()),
                            '[{"id": 4, "x": 0, "size": 3, "y": 0}]\n')
 
+    def test_empty_array(self):
+        """
+        Test Empty Case
+        """
+        helpers = Helpers()
+
+        Rectangle.save_to_file([])
+
+        with open("Rectangle.json", "r") as file:
+            helpers.stdout(lambda: print(file.read()),
+                           '[]\n')
+
+        Square.save_to_file([])
+
+        with open("Square.json", "r") as file:
+            helpers.stdout(lambda: print(file.read()),
+                           '[]\n')
+
     def test_empty(self):
         """
         Test Empty Case
@@ -64,19 +82,8 @@ class TestBaseClass(unittest.TestCase):
         with open("Rectangle.json", "r") as file:
             helpers.stdout(lambda: print(file.read()),
                            '[]\n')
-        Rectangle.save_to_file([])
-
-        with open("Rectangle.json", "r") as file:
-            helpers.stdout(lambda: print(file.read()),
-                           '[]\n')
 
         Square.save_to_file(None)
-
-        with open("Square.json", "r") as file:
-            helpers.stdout(lambda: print(file.read()),
-                           '[]\n')
-
-        Square.save_to_file([])
 
         with open("Square.json", "r") as file:
             helpers.stdout(lambda: print(file.read()),
