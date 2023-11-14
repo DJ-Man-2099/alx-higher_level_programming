@@ -3,6 +3,7 @@
 import os
 import sys
 import subprocess
+from models.rectangle import Rectangle
 
 
 def run_command(cmd):
@@ -16,8 +17,9 @@ def run_unittest():
     nb_tests = 0
     is_success = False
     try:
-        res = run_command("python3 -m unittest discover tests")
+        res = run_command("python -m unittest discover tests -v")
         for line in res.split("\\n"):
+            print(line)
             if "Ran " in line:
                 nb_tests = int(res.split("Ran ")[-1].split(" tests")[0])
             if nb_tests > 0 and "OK" in line:
@@ -84,4 +86,4 @@ if os.path.exists(file_path_updated):
         os.remove(file_path_to_update)
     os.rename(file_path_updated, file_path_to_update)
 
-print("OK", end="")
+print("OK")

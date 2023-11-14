@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Unittest for Base Class
 """
+import os
 import unittest
 from models.base import Base
 from models.rectangle import Rectangle
@@ -18,6 +19,9 @@ class TestBaseClass(unittest.TestCase):
     def setUp(self):
         # Reset the class ids before each test
         Base.reset_before_tests()
+        for path in ["Rectangle.json", "Square.json"]:
+            if os.path.exists(path):
+                os.remove(path)
 
     def test_save_to_file_doc(self):
         """
@@ -56,17 +60,17 @@ class TestBaseClass(unittest.TestCase):
 
     def test_empty_array(self):
         """
-        Test Empty Case
+        Test Empty array
         """
         helpers = Helpers()
 
-        Rectangle.save_to_file([])
+        Rectangle.save_to_file(list())
 
         with open("Rectangle.json", "r") as file:
             helpers.stdout(lambda: print(file.read()),
                            '[]\n')
 
-        Square.save_to_file([])
+        Square.save_to_file(list())
 
         with open("Square.json", "r") as file:
             helpers.stdout(lambda: print(file.read()),
