@@ -47,6 +47,13 @@ class TestBaseClass(unittest.TestCase):
             helpers.stdout(lambda: print(file.read()),
                            '[{"x": 0, "y": 0, "id": 3, "height": 4, "width": 3}]\n')
 
+        r2 = Square(3)
+        Square.save_to_file([r2])
+
+        with open("Square.json", "r") as file:
+            helpers.stdout(lambda: print(file.read()),
+                           '[{"id": 4, "x": 0, "size": 3, "y": 0}]\n')
+
     def test_empty(self):
         """
         Test Empty Case
