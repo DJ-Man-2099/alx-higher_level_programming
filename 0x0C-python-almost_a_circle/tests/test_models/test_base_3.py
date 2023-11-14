@@ -4,6 +4,7 @@
 import unittest
 from models.base import Base
 from models.rectangle import Rectangle
+from models.square import Square
 from help_functions.helpers import Helpers
 
 
@@ -54,6 +55,22 @@ class TestBaseClass(unittest.TestCase):
         Rectangle.save_to_file(None)
 
         with open("Rectangle.json", "r") as file:
+            helpers.stdout(lambda: print(file.read()),
+                           '[]\n')
+        Rectangle.save_to_file([])
+
+        with open("Rectangle.json", "r") as file:
+            helpers.stdout(lambda: print(file.read()),
+                           '[]\n')
+
+        Square.save_to_file(None)
+
+        with open("Square.json", "r") as file:
+            helpers.stdout(lambda: print(file.read()),
+                           '[]\n')
+        Square.save_to_file([])
+
+        with open("Square.json", "r") as file:
             helpers.stdout(lambda: print(file.read()),
                            '[]\n')
 

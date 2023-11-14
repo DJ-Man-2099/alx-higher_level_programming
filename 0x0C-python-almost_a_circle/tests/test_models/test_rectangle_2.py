@@ -37,6 +37,8 @@ class TestRectangleClass(unittest.TestCase):
         with self.assertRaises(TypeError) as verror:
             Rectangle(10, "2")
         self.assertEqual(str(verror.exception), "height must be an integer")
+        with self.assertRaises(ValueError) as verror:
+            r = Rectangle(-10, 2)
         r = Rectangle(10, 2)
         with self.assertRaises(ValueError) as verror:
             r.width = -10
