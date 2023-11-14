@@ -41,11 +41,11 @@ class TestBaseClass(unittest.TestCase):
                            '[{"x": 2, "y": 8, "id": 1, "height": 7, "width": 10}, {"x": 0, "y": 0, "id": 2, "height": 4, "width": 2}]\n')
 
         r2 = Rectangle(3, 4)
-        Rectangle.save_to_file([r1, r2])
+        Rectangle.save_to_file([r2])
 
         with open("Rectangle.json", "r") as file:
             helpers.stdout(lambda: print(file.read()),
-                           '[{"x": 2, "y": 8, "id": 1, "height": 7, "width": 10}, {"x": 0, "y": 0, "id": 3, "height": 4, "width": 3}]\n')
+                           '[{"x": 0, "y": 0, "id": 3, "height": 4, "width": 3}]\n')
 
     def test_empty(self):
         """
