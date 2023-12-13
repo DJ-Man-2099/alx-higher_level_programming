@@ -1,3 +1,3 @@
 -- Show Table desc
-SHOW COLUMNS
+SHOW *
 FROM first_table;
