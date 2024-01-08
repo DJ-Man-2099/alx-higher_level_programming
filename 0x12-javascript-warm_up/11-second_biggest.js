@@ -1,6 +1,16 @@
 #!/usr/bin/node
-if (process.argv[2] && !isNaN(process.argv[2])) {
-  console.log('My number: ' + process.argv[2]);
+if (process.argv.length <= 3) {
+  console.log(0);
 } else {
-  console.log('Not a number');
+  const list = process.argv
+    .slice(2)
+    .map(element => parseInt(element));
+  list.splice(
+    list.findIndex(
+      element => element === Math.max(...list)
+    ),
+    1
+  );
+  const secondLargest = Math.max(...list);
+  console.log(secondLargest);
 }
