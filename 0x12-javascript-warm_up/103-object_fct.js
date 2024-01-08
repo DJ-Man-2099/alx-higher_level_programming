@@ -1,8 +1,13 @@
 #!/usr/bin/node
-function factorial (num) {
-  if (isNaN(num) || num <= 0) {
-    return 1;
-  }
-  return num * factorial(num - 1);
-}
-console.log(factorial(process.argv[2]));
+const myObject = {
+  type: 'object',
+  value: 12
+};
+console.log(myObject);
+myObject.incr = () => myObject.value++;
+myObject.incr();
+console.log(myObject);
+myObject.incr();
+console.log(myObject);
+myObject.incr();
+console.log(myObject);
