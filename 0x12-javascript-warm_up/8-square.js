@@ -5,8 +5,8 @@ if (process.argv[2] && !isNaN(process.argv[2])) {
     index < parseInt(process.argv[2]);
     index++
   ) {
-    console.log('C is fun');
+    console.log('X'.repeat(parseInt(process.argv[2])));
   }
 } else {
-  console.log('Missing number of occurrences');
+  console.log('Missing size');
 }
