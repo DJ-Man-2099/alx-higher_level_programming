@@ -1,14 +1,15 @@
 #!/usr/bin/node
-const dict = require('./101-data').dict;
+const fs = require('fs');
 
-const newDict = {};
+const fileA = process.argv[2];
+const fileB = process.argv[3];
+const fileC = process.argv[4];
 
-for (const key in dict) {
-  if (!newDict[dict[key]]) {
-    newDict[dict[key]] = [key];
-  } else {
-    newDict[dict[key]] = [...newDict[dict[key]], key];
+const fileAContents = fs.readFileSync(fileA);
+const fileBContents = fs.readFileSync(fileB);
+
+fs.writeFile(fileC, fileAContents + fileBContents, err => {
+  if (err) {
+    console.error(err);
   }
-}
-
-console.log(newDict);
+});
