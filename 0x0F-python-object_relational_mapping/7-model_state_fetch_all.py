@@ -4,21 +4,17 @@
 lists all cities from the database hbtn_0e_0_usa
 '''
 
-import MySQLdb
+from sqlalchemy.orm import sessionmaker
 import sys
+from model_state import Base, State
+from sqlalchemy import (asc, create_engine)
 
 if __name__ == "__main__":
-    args = sys.argv
-    db = MySQLdb.connect("localhost", args[1], args[2], args[3])
-    c = db.cursor()
-    state = args[4]
-    c.execute(
-        """SELECT cities.name
-        from cities JOIN states
-        WHERE states.id = cities.state_id AND states.name = %s
-        ORDER BY cities.id""", (state,))
-    rows = c.fetchall()
-    rows_formatted = list(map(lambda tub: tub[0], rows))
-    print(", ".join(rows_formatted))
-    # Close the connection
-    db.close()
+    engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'.format(
+        sys.argv[1], sys.argv[2], sys.argv[3]), pool_pre_ping=True)
+    Base.metadata.create_all(engine)
+    Session = sessionmaker(bind=engine)
+    session = Session()
+    rows = session.query(State).order_by(asc(State.id)).all()
+    for row in rows:
+        print("{}: {}".format(row.id, row.name))
