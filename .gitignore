@@ -3,3 +3,4 @@
 .vscode/*
 0x00-python-hello_world/q
 0x0C-python-almost_a_circle/main.py
+0x0F-python-object_relational_mapping/venv/**
