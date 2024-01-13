@@ -10,10 +10,11 @@ import sys
 if __name__ == "__main__":
     args = sys.argv
     db = MySQLdb.connect("localhost", args[1], args[2], args[3])
+    name = args[4]
     c = db.cursor()
     c.execute(
         'SELECT * from states WHERE states.name LIKE \
-          BINARY "N%" ORDER BY states.id')
+          BINARY "{}" ORDER BY states.id'.format(name))
     rows = c.fetchall()
     for row in rows:
         print(row)
