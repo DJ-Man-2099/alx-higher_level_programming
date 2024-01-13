@@ -13,10 +13,12 @@ if __name__ == "__main__":
     engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'.format(
         sys.argv[1], sys.argv[2], sys.argv[3]), pool_pre_ping=True)
     Base.metadata.create_all(engine)
+    state = sys.argv[4]
     Session = sessionmaker(bind=engine)
     session = Session()
-    row = session.query(State).order_by(asc(State.id)).first()
+    row = session.query(State).filter_by(
+        name=state).order_by(asc(State.id)).first()
     if row is None:
-        print("Nothing")
+        print("Not found")
     else:
-        print("{}: {}".format(row.id, row.name))
+        print(row.id)
