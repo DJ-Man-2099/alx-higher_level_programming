@@ -11,12 +11,14 @@ if __name__ == "__main__":
     args = sys.argv
     db = MySQLdb.connect("localhost", args[1], args[2], args[3])
     c = db.cursor()
+    state = args[4]
     c.execute(
-        """SELECT cities.id, cities.name, states.name
-        from cities JOIN states WHERE states.id = cities.state_id
-        ORDER BY cities.id""")
+        """SELECT cities.name
+        from cities JOIN states
+        WHERE states.id = cities.state_id AND states.name = %s
+        ORDER BY cities.id""", (state,))
     rows = c.fetchall()
-    for row in rows:
-        print(row)
+    rows_formatted = list(map(lambda tub: tub[0], rows))
+    print(", ".join(rows_formatted))
     # Close the connection
     db.close()
