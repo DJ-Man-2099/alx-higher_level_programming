@@ -7,6 +7,7 @@ lists all cities from the database hbtn_0e_0_usa
 from sqlalchemy.orm import sessionmaker
 import sys
 from model_state import Base, State
+from model_city import City
 from sqlalchemy import (asc, create_engine)
 
 if __name__ == "__main__":
@@ -15,7 +16,6 @@ if __name__ == "__main__":
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
-    row = session.query(State).filter_by(id=2).first()
-    if row is not None:
-        row.name = "New Mexico"
-    session.commit()
+    rows = session.query(City).order_by(asc(City.id)).all()
+    for row in rows:
+        print("{}: ({}) {}".format(row.state.name, row.id, row.name))
