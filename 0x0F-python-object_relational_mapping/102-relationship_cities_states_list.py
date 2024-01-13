@@ -18,4 +18,4 @@ if __name__ == "__main__":
     session = Session()
     rows = session.query(City).order_by(asc(City.id)).all()
     for row in rows:
-        print("{}: ({}) {}".format(row.state.name, row.id, row.name))
+        print("{}: {} -> {}".format(row.id, row.name, row.state.name))
