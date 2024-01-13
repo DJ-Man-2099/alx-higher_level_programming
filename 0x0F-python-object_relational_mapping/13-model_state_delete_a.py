@@ -15,7 +15,6 @@ if __name__ == "__main__":
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
-    row = session.query(State).filter_by(id=2).first()
-    if row is not None:
-        row.name = "New Mexico"
+    rows = session.query(State).filter(
+        State.name.contains("a")).delete()
     session.commit()
