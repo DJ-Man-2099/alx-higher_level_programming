@@ -16,3 +16,5 @@ if __name__ == "__main__":
     rows = c.fetchall()
     for row in rows:
         print(row)
+    # Close the connection
+    db.close()
