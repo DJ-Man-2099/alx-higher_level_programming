@@ -1,3 +1,3 @@
 #!/bin/bash
-# takes in a URL, sends a request to that URL and displays the size of the body of the response
-curl -sI "$1" | grep Content-Length | cut -d' ' -f2
+# takes in a URL, sends a GET request to the URL, and stores the body and status code in an array
+readarray -t response < <(curl -s -w "\n%{http_code}" "$1") && [ "${response[-1]}" -eq 200 ] && unset 'response[-1]' && echo "${response[@]}"
