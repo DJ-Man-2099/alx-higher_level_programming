@@ -7,8 +7,11 @@ import requests
 
 if __name__ == "__main__":
     url = "http://0.0.0.0:5000/search_user"
+    q = ""
+    if len(sys.argv) > 1:
+        q = sys.argv[1]
     body = {
-        'q': sys.argv[1] if sys.argv[1] else ""
+        'q': q
     }
     with requests.post(url, data=body) as response:
         try:
