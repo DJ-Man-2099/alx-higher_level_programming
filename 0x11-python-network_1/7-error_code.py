@@ -2,7 +2,6 @@
 """
 Module
 """
-import re
 import sys
 import requests
 
