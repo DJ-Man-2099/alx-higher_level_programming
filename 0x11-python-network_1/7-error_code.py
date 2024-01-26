@@ -3,15 +3,14 @@
 Module
 """
 import sys
-import urllib.request as request
-import urllib.parse as parse
-import urllib.error as error
+import requests
 
 if __name__ == "__main__":
     url = sys.argv[1]
     try:
-        with request.urlopen(url) as response:
-            body = response.read().decode('utf-8')
+        with requests.get(url) as response:
+            body = response.text
             print(body)
-    except error.HTTPError as e:
-        print("Error code: {}".format(e.code))
+    except requests.HTTPError as e:
+        if e.response is not None and e.response.status_code >= 400:
+            print("Error code: {}".format(e.response.status_code))
