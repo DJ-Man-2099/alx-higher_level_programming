@@ -13,7 +13,7 @@ if __name__ == "__main__":
     with requests.post(url, data=body) as response:
         try:
             body = response.json()
-            if body == {}:
+            if not body:
                 print("No result")
             else:
                 print(f"[{body.get('id')}] {body.get('name')}")
