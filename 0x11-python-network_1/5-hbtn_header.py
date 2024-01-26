@@ -2,12 +2,11 @@
 """
 Module
 """
+import sys
 import requests
 
 if __name__ == "__main__":
-    url = "https://alx-intranet.hbtn.io/status"
+    url = sys.argv[1]
     with requests.get(url) as response:
-        body = response.text
-        print("Body response:")
-        print(f"\t- type: {type(body)}")
-        print(f"\t- content: {body}")
+        body = response.headers.get('X-Request-Id')
+        print(body)
