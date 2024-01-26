@@ -6,10 +6,9 @@ import sys
 import requests
 
 if __name__ == "__main__":
-    url = "https://api.github.com/user"
     user_name = sys.argv[1]
     token = sys.argv[2]
-    # token = "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"
+    url = f"https://api.github.com/users/{user_name}"
     headers = {
         "Authorization": f"Bearer {token}",
         "X-GitHub-Api-Version": "2022-11-28"
