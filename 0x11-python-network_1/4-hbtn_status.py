@@ -2,16 +2,12 @@
 """
 Module
 """
-import sys
-import urllib.request as request
-import urllib.parse as parse
-import urllib.error as error
+import requests
 
 if __name__ == "__main__":
-    url = sys.argv[1]
-    try:
-        with request.urlopen(url) as response:
-            body = response.read().decode('utf-8')
-            print(body)
-    except error.HTTPError as e:
-        print("Error code: {}".format(e.code))
+    url = "https://alx-intranet.hbtn.io/status"
+    with requests.get(url) as response:
+        body = response.text
+        print("Body response:")
+        print(f"\t -type: {type(body)}")
+        print(f"\t -content: {body}")
