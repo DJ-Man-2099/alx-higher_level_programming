@@ -2,15 +2,15 @@
 """
 Module
 """
+import re
 import sys
 import requests
 
 if __name__ == "__main__":
     url = sys.argv[1]
-    try:
-        with requests.get(url) as response:
-            body = response.text
+    with requests.get(url) as response:
+        body = response.text
+        if response.status_code >= 400:
+            print("Error code: {}".format(response.status_code))
+        else:
             print(body)
-    except requests.exceptions.HTTPError as e:
-        if e.response is not None and e.response.status_code >= 400:
-            print("Error code: {}".format(e.response.status_code))
