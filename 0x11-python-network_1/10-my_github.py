@@ -6,19 +6,13 @@ import sys
 import requests
 
 if __name__ == "__main__":
-    url = "http://0.0.0.0:5000/search_user"
-    q = ""
-    if len(sys.argv) > 1:
-        q = sys.argv[1]
-    body = {
-        'q': q
+    url = "https://api.github.com/user"
+    user_name = sys.argv[1]
+    token = sys.argv[2]
+    # token = "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"
+    headers = {
+        "Authorization": f"Bearer {token}",
+        "X-GitHub-Api-Version": "2022-11-28"
     }
-    with requests.post(url, data=body) as response:
-        try:
-            body = response.json()
-            if not body:
-                print("No result")
-            else:
-                print(f"[{body.get('id')}] {body.get('name')}")
-        except ValueError:
-            print("Not a valid JSON")
+    with requests.get(url, headers=headers) as response:
+        print(response.json().get("id"))
