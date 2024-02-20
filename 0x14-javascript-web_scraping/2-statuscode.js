@@ -1,10 +1,7 @@
 #!/usr/bin/node
-const fs = require('fs');
+const { log } = require('console');
+const request = require('request');
 
-fs.readFile(process.argv[2], 'utf8', (err, data) => {
-  if (err) {
-    console.log(err);
-  } else {
-    console.log(data);
-  }
+request(process.argv[2], (error, response, body) => {
+  log('code: ', response.statusCode);
 });
