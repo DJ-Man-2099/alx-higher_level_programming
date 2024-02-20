@@ -3,26 +3,24 @@ const { log } = require('console');
 const request = require('request');
 
 request(
-  process.argv[2],
+  'https://swapi-api.alx-tools.com/api/films/' + process.argv[2],
   (error, response, body) => {
     if (error) {
       log(error);
     } else if (response.statusCode !== 200) {
       console.log('An error occured. Status code: ' + response.statusCode);
     } else {
-      let count = 0;
-      const id = 18;
-      const movies = (JSON.parse(body)).results;
-      for (const index in movies) {
-        const movie = movies[index];
-        const characters = movie.characters;
-        for (const char in characters) {
-          if (characters[char].includes(id)) {
-            count++;
+      const movie = (JSON.parse(body));
+      const characters = movie.characters;
+      for (const char in characters) {
+        request(characters[char], (error, response, body) => {
+          if (error) {
+            log(error);
+          } else {
+            log(JSON.parse(body).name);
           }
-        }
+        });
       }
-      log(count);
     }
   }
 );
