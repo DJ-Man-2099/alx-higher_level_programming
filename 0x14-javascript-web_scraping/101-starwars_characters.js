@@ -27,7 +27,9 @@ const getAllCharacters = (url) => {
               const movieCharacters = movie.characters;
               for (const char in movieCharacters) {
                 const id = movieCharacters[char].split('/')[5];
-                log(characters[id - 1].name);
+                log(characters.
+                  find(c => c.url === movieCharacters[char])
+                  .name);
               }
             }
           }
