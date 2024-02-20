@@ -1,5 +1,5 @@
 #!/usr/bin/node
-const { log, error } = require('console');
+const { log } = require('console');
 const request = require('request');
 
 const characters = [];
@@ -35,6 +35,6 @@ const getAllCharacters = (url) => {
       }
     }
   });
-}
+};
 
 getAllCharacters('https://swapi-api.alx-tools.com/api/people/');
