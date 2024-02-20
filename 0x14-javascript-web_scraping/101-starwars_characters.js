@@ -1,26 +1,40 @@
 #!/usr/bin/node
-const { log } = require('console');
+const { log, error } = require('console');
 const request = require('request');
 
-request(
-  'https://swapi-api.alx-tools.com/api/films/' + process.argv[2],
-  (error, response, body) => {
+const characters = [];
+
+const getAllCharacters = (url) => {
+  request(url, (error, response, body) => {
     if (error) {
       log(error);
     } else if (response.statusCode !== 200) {
       console.log('An error occured. Status code: ' + response.statusCode);
     } else {
-      const movie = (JSON.parse(body));
-      const characters = movie.characters;
-      for (const char in characters) {
-        request(characters[char], (error, response, body) => {
-          if (error) {
-            log(error);
-          } else {
-            log(JSON.parse(body).name);
+      characters.push(...JSON.parse(body).results);
+      if (JSON.parse(body).next) {
+        getAllCharacters(JSON.parse(body).next);
+      } else {
+        request(
+          'https://swapi-api.alx-tools.com/api/films/' + process.argv[2],
+          (innerError, innerResponse, innerBody) => {
+            if (innerError) {
+              log(innerError);
+            } else if (innerResponse.statusCode !== 200) {
+              console.log('An error occured. Status code: ' + response.statusCode);
+            } else {
+              const movie = (JSON.parse(innerBody));
+              const movieCharacters = movie.characters;
+              for (const char in movieCharacters) {
+                const id = movieCharacters[char].split('/')[5];
+                log(characters[id - 1].name);
+              }
+            }
           }
-        });
+        );
       }
     }
-  }
-);
+  });
+}
+
+getAllCharacters('https://swapi-api.alx-tools.com/api/people/');
