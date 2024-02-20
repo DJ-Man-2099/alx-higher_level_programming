@@ -1,7 +1,6 @@
 #!/usr/bin/node
 const { log } = require('console');
 const request = require('request');
-const fs = require('fs');
 
 request(
   process.argv[2],
@@ -9,9 +8,15 @@ request(
     if (error) {
       log(error);
     } else {
-      fs.writeFileSync(process.argv[3], body, {
-        encoding: 'utf8'
-      });
+      const completedUsers = {};
+      const tasks = JSON.parse(body);
+      for (const index in tasks) {
+        const user = tasks[index].userId;
+        if (tasks[index].completed) {
+          completedUsers[user] = (completedUsers[user] || 0) + 1;
+        }
+      }
+      log(completedUsers);
     }
   }
 );
